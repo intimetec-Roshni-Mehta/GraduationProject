@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="SocketClient\oz41vjlm.uwq~" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CodingUpAStorm.VaderSharp" Version="1.0.4" />
+    <PackageReference Include="ConsoleTableExt" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RecomendationEngine.Services\RecomendationEngine.Services.csproj" />
+    <ProjectReference Include="..\RecommendationEngine.DataModel\RecommendationEngine.DataModel.csproj" />
+  </ItemGroup>
+
+</Project>
