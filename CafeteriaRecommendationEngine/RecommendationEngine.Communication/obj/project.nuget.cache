@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mHCEBvDh5sc=",
+  "dgSpecHash": "mgyMON+iZI8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\roshni.mehta\\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\\Desktop\\Gratuation_Project_2024\\CafeteriaRecommendationEngine\\RecommendationEngine.Communication\\RecommendationEngine.Communication.csproj",
+  "projectFilePath": "D:\\GraduationProject\\CafeteriaRecommendationEngine\\RecommendationEngine.Communication\\RecommendationEngine.Communication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\roshni.mehta\\.nuget\\packages\\codingupastorm.vadersharp\\1.0.4\\codingupastorm.vadersharp.1.0.4.nupkg.sha512",
     "C:\\Users\\roshni.mehta\\.nuget\\packages\\consoletableext\\3.2.0\\consoletableext.3.2.0.nupkg.sha512",

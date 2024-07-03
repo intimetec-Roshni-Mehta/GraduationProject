@@ -7696,11 +7696,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\roshni.mehta\\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\\Desktop\\Gratuation_Project_2024\\CafeteriaRecommendationEngine\\CafeteriaRecommendationEngine\\RecommendationEngine.Server.csproj",
+      "projectUniqueName": "D:\\GraduationProject\\CafeteriaRecommendationEngine\\CafeteriaRecommendationEngine\\RecommendationEngine.Server.csproj",
       "projectName": "RecommendationEngine.Server",
-      "projectPath": "C:\\Users\\roshni.mehta\\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\\Desktop\\Gratuation_Project_2024\\CafeteriaRecommendationEngine\\CafeteriaRecommendationEngine\\RecommendationEngine.Server.csproj",
+      "projectPath": "D:\\GraduationProject\\CafeteriaRecommendationEngine\\CafeteriaRecommendationEngine\\RecommendationEngine.Server.csproj",
       "packagesPath": "C:\\Users\\roshni.mehta\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\roshni.mehta\\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\\Desktop\\Gratuation_Project_2024\\CafeteriaRecommendationEngine\\CafeteriaRecommendationEngine\\obj\\",
+      "outputPath": "D:\\GraduationProject\\CafeteriaRecommendationEngine\\CafeteriaRecommendationEngine\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -7722,11 +7722,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\roshni.mehta\\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\\Desktop\\Gratuation_Project_2024\\CafeteriaRecommendationEngine\\RecommendationEngine.Communication\\RecommendationEngine.Communication.csproj": {
-              "projectPath": "C:\\Users\\roshni.mehta\\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\\Desktop\\Gratuation_Project_2024\\CafeteriaRecommendationEngine\\RecommendationEngine.Communication\\RecommendationEngine.Communication.csproj"
+            "D:\\GraduationProject\\CafeteriaRecommendationEngine\\RecommendationEngine.Communication\\RecommendationEngine.Communication.csproj": {
+              "projectPath": "D:\\GraduationProject\\CafeteriaRecommendationEngine\\RecommendationEngine.Communication\\RecommendationEngine.Communication.csproj"
             },
-            "C:\\Users\\roshni.mehta\\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\\Desktop\\Gratuation_Project_2024\\CafeteriaRecommendationEngine\\RecommendationEngine.DAL\\RecommendationEngine.DAL.csproj": {
-              "projectPath": "C:\\Users\\roshni.mehta\\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\\Desktop\\Gratuation_Project_2024\\CafeteriaRecommendationEngine\\RecommendationEngine.DAL\\RecommendationEngine.DAL.csproj"
+            "D:\\GraduationProject\\CafeteriaRecommendationEngine\\RecommendationEngine.DAL\\RecommendationEngine.DAL.csproj": {
+              "projectPath": "D:\\GraduationProject\\CafeteriaRecommendationEngine\\RecommendationEngine.DAL\\RecommendationEngine.DAL.csproj"
             }
           }
         }

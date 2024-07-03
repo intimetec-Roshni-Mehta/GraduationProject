@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oVKeg6q7mRE=",
+  "dgSpecHash": "xy9r81suDiE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\roshni.mehta\\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\\Desktop\\Gratuation_Project_2024\\CafeteriaRecommendationEngine\\RecommendationEngine.DataModel\\RecommendationEngine.DataModel.csproj",
+  "projectFilePath": "D:\\GraduationProject\\CafeteriaRecommendationEngine\\RecommendationEngine.DataModel\\RecommendationEngine.DataModel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\roshni.mehta\\.nuget\\packages\\codingupastorm.vadersharp\\1.0.4\\codingupastorm.vadersharp.1.0.4.nupkg.sha512",
     "C:\\Users\\roshni.mehta\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
