@@ -24,8 +24,8 @@ namespace RecommendationEngine.Communication.SocketServer
 
         public static async Task StartServer(IServiceProvider services)
         {
-            var ipAddress = IPAddress.Parse("172.16.2.4");
-            var localEndPoint = new IPEndPoint(ipAddress, 1234);
+            var ipAddress = IPAddress.Parse("172.20.10.14");
+            var localEndPoint = new IPEndPoint(ipAddress, 9999);
 
             var listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
@@ -315,26 +315,28 @@ namespace RecommendationEngine.Communication.SocketServer
                     var itemDetails = rolledOutItems.Select(item =>
                     {
                         var mealTypeName = item.MealType?.MealTypeName ?? "Unknown";
-                        return $"ID: {item.ItemId}, Name: {item.ItemName}, Price: {item.Price}, Status: {item.AvailabilityStatus}, MealType: {mealTypeName}, Votes: {item.Recommendations?.FirstOrDefault()?.Voting ?? 0}";
+                        return $"ID: {item.ItemId}, Name: {item.ItemName}, Price: {item.Price}, Status: {item.AvailabilityStatus}, MealType: {mealTypeName}";
                     }).Aggregate((current, next) => current + "\n" + next);
 
                     return $"Rolled out menu for tomorrow:\n{itemDetails}";
 
-                case "3": // Vote for Item
+                case "3": // Vote for Items
                     if (parts.Length < 3)
                     {
-                        return "Invalid command format for Vote. Expected: 3;username;itemId";
+                        return "Invalid command format for Vote. Expected: 3;username;itemId1,itemId2,...";
                     }
 
                     var voteUsername = parts[1];
-                    var voteItemId = int.Parse(parts[2]);
+                    var voteItemIds = parts[2].Split(',').Select(int.Parse).ToList();
 
-                    // Check if the item is in the rolled-out menu
+                    // Check if the items are in the rolled-out menu
                     var rolledOutItemsForVote = await chefService.GetRolledOutMenu(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"));
-                    var itemToVote = rolledOutItemsForVote.FirstOrDefault(item => item.ItemId == voteItemId);
-                    if (itemToVote == null)
+                    var validItemIds = rolledOutItemsForVote.Select(item => item.ItemId).ToList();
+                    var invalidItemIds = voteItemIds.Except(validItemIds).ToList();
+
+                    if (invalidItemIds.Any())
                     {
-                        return "Item not found in the rolled-out menu";
+                        return $"Items with IDs {string.Join(", ", invalidItemIds)} are not found in the rolled-out menu";
                     }
 
                     var voteUserId = await authService.GetUserIdByUsername(voteUsername);
@@ -342,13 +344,12 @@ namespace RecommendationEngine.Communication.SocketServer
                     {
                         return "User not found";
                     }
-                    return await employeeService.VoteForItem(voteUserId.Value, voteItemId);
+                    return await employeeService.VoteForItems(voteUserId.Value, voteItemIds);
 
                 default:
                     return "Unknown employee command";
             }
         }
-
 
         private static async Task<string> GetItemsList()
         {

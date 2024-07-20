@@ -31,51 +31,68 @@ namespace RecomendationEngine.Services.Implementation
             _menuRepository = menuRepository;
         }
 
-        public async Task<string> VoteForItem(int userId, int itemId)
+        public async Task<string> VoteForItems(int userId, List<int> itemIds)
         {
             var today = DateTime.Now.Date;
+            var successfulVotes = new List<int>();
+            var duplicateVotes = new List<int>();
 
-            // Check if the user has already voted for this item today
-            var existingVote = await _votedItemRepository.GetVoteAsync(userId, itemId, today);
-            if (existingVote != null)
+            foreach (var itemId in itemIds)
             {
-                return "You have already voted for this item today.";
-            }
-
-            // Add new vote
-            var vote = new VotedItem
-            {
-                UserId = userId,
-                ItemId = itemId,
-                VoteDate = today
-            };
-            await _votedItemRepository.AddAsync(vote);
-
-            // Update recommendation voting count
-            var recommendation = await _recommendationRepository.GetRecommendationAsync(itemId);
-            if (recommendation != null)
-            {
-                recommendation.Voting++;
-            }
-            else
-            {
-                recommendation = new Recommendation
+                // Check if the user has already voted for this item today
+                var existingVote = await _votedItemRepository.GetVoteAsync(userId, itemId, today);
+                if (existingVote != null)
                 {
+                    duplicateVotes.Add(itemId);
+                    continue;
+                }
+
+                // Add new vote
+                var vote = new VotedItem
+                {
+                    UserId = userId,
                     ItemId = itemId,
-                    RecommendedDate = today,
-                    Voting = 1
+                    VoteDate = today
                 };
-                await _recommendationRepository.AddOrUpdateAsync(recommendation);
+                await _votedItemRepository.AddAsync(vote);
+
+                // Update recommendation voting count
+                var recommendation = await _recommendationRepository.GetRecommendationAsync(itemId);
+                if (recommendation != null)
+                {
+                    recommendation.Voting++;
+                }
+                else
+                {
+                    recommendation = new Recommendation
+                    {
+                        ItemId = itemId,
+                        RecommendedDate = today,
+                        Voting = 1
+                    };
+                    await _recommendationRepository.AddOrUpdateAsync(recommendation);
+                }
+
+                // Ensure the item is in the rolled-out menu
+                await _menuRepository.AddMenuItemAsync(itemId, today.ToString("yyyy-MM-dd"));
+
+                successfulVotes.Add(itemId);
             }
 
             await _recommendationRepository.SaveChangesAsync();
 
-            // Ensure the item is in the rolled-out menu
-            await _menuRepository.AddMenuItemAsync(itemId, today.ToString("yyyy-MM-dd"));
+            var responseMessage = new StringBuilder();
+            if (successfulVotes.Any())
+            {
+                responseMessage.AppendLine($"You have successfully voted for the following item IDs: {string.Join(", ", successfulVotes)}.");
+            }
+            if (duplicateVotes.Any())
+            {
+                responseMessage.AppendLine($"You have already voted for the following item IDs today: {string.Join(", ", duplicateVotes)}.");
+            }
 
-            return "Vote recorded successfully.";
+            return responseMessage.ToString();
         }
-
 
         public async Task<string> GiveFeedback(int userId, int itemId, int rating, string comment)
         {

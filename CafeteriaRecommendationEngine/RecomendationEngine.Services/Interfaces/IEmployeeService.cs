@@ -8,7 +8,7 @@ namespace RecomendationEngine.Services.Interfaces
 {
     public interface IEmployeeService
     {
-        Task<string> VoteForItem(int userId, int itemId);
+        Task<string> VoteForItems(int userId, List<int> itemIds);
         Task<string> GiveFeedback(int userId, int itemId, int rating, string comment);
     }
 }

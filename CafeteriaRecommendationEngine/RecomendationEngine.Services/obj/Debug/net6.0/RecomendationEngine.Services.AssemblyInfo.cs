@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RecomendationEngine.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f8c2f4fd6d61df1adbcc3d22b2df06512ce010b2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d789207c7fae4db716783d5c7e07a8bb43e508e")]
 [assembly: System.Reflection.AssemblyProductAttribute("RecomendationEngine.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RecomendationEngine.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

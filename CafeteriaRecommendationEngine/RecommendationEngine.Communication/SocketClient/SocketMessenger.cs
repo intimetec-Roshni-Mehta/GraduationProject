@@ -11,7 +11,7 @@ namespace RecommendationEngine.Communication.SocketClient
         {
             try
             {
-                var remoteEP = new IPEndPoint(IPAddress.Parse("172.16.2.4"), 1234);
+                var remoteEP = new IPEndPoint(IPAddress.Parse("172.20.10.14"), 9999);
 
                 using (Socket sender = new Socket(remoteEP.AddressFamily, SocketType.Stream, ProtocolType.Tcp))
                 {
@@ -102,7 +102,7 @@ namespace RecommendationEngine.Communication.SocketClient
                     ProcessChefOptions(sender, username);
                     break;
                 case "Login successful; Role: Employee":
-                    Console.WriteLine("Options:\n1. Give Feedback\n2. View Menu\n3. Vote For Item\n");
+                    Console.WriteLine("Options:\n1. Give Feedback\n2. View Recommended Menu\n3. Vote For Item\n");
                     ProcessEmployeeOptions(sender, username);
                     break;
                 default:
@@ -254,7 +254,7 @@ namespace RecommendationEngine.Communication.SocketClient
                     }
                     else if (option == "3")
                     {
-                        Console.Write("Enter item ID to vote: ");
+                        Console.Write("Enter item IDs you want to vote separated by commas: ");
                         var itemId = Console.ReadLine();
                         SendMessage(sender, $"{option};{username};{itemId}");
                     }
