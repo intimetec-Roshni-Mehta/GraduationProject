@@ -13,5 +13,7 @@ namespace RecomendationEngine.Services.Interfaces
 
         Task<bool> CheckMenuRolledOut(string date);
         Task<List<Item>> GetRolledOutMenu(string date);
+        Task<string> GetVotedItems();
+        Task<string> FinalizeMenu(string date, List<int> itemIds);
     }
 }

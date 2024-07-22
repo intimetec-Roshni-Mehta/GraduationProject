@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ConsoleTableExt;
+using Microsoft.EntityFrameworkCore;
 using RecomendationEngine.Services.Interfaces;
+using RecommendationEngine.DAL.Repositories.Implementation;
 using RecommendationEngine.DAL.Repositories.Interfaces;
 using RecommendationEngine.DataModel.Models;
 using System;
@@ -14,11 +16,13 @@ namespace RecomendationEngine.Services.Implementation
     {
         private readonly IMenuRepository _menuRepository;
         private readonly IItemRepository _itemRepository;
+        private readonly IRecommendationRepository _recommendationRepository;
 
-        public ChefService(IMenuRepository menuRepository, IItemRepository itemRepository)
+        public ChefService(IMenuRepository menuRepository, IItemRepository itemRepository, IRecommendationRepository recommendationRepository)
         {
             _menuRepository = menuRepository;
             _itemRepository = itemRepository;
+            _recommendationRepository = recommendationRepository;
         }
 
         public async Task<string> RolloutMenu(string date, List<int> itemIds)
@@ -58,6 +62,81 @@ namespace RecomendationEngine.Services.Implementation
             return menus.SelectMany(menu => menu.MenuItems.Select(mi => mi.Item)).ToList();
         }
 
-    }
+        public async Task<string> GetVotedItems()
+        {
+            var today = DateTime.Now.Date;
+            var votedItems = await _recommendationRepository.GetVotedItemsAsync(today);
 
+            if (votedItems == null || !votedItems.Any())
+            {
+                return "No items have been voted on.";
+            }
+
+            var itemDetails = votedItems.Select(item => new VotedItemDto
+            {
+                ID = item.ItemId,
+                Name = item.ItemName,
+                MealType = item.MealType?.MealTypeName ?? "Unknown",
+                Votes = item.Recommendations.FirstOrDefault()?.Voting ?? 0
+            }).ToList();
+
+            var tableString = ConsoleTableBuilder
+                .From(itemDetails)
+                .WithFormat(ConsoleTableBuilderFormat.MarkDown)
+                .Export()
+                .ToString();
+
+            return $"Voted items:\n{tableString}";
+        }
+
+        public async Task<string> FinalizeMenu(string date, List<int> itemIds)
+        {
+            var parsedDate = DateTime.Parse(date);
+            var previousDate = parsedDate.AddDays(-1);
+
+            var isMenuRolledOut = await _menuRepository.IsMenuRolledOutAsync(parsedDate);
+            if (!isMenuRolledOut)
+            {
+                return "Menu has not been rolled out for the specified date.";
+            }
+
+            // Get the voted items for the previous date
+            var votedItems = await _recommendationRepository.GetVotedItemsAsync(previousDate);
+
+            if (votedItems == null || !votedItems.Any())
+            {
+                return "No items have been voted on.";
+            }
+
+            // Filter voted items that are part of the provided item IDs
+            var filteredVotedItems = votedItems.Where(item => itemIds.Contains(item.ItemId)).ToList();
+
+            if (!filteredVotedItems.Any())
+            {
+                return "No voted items match the provided item IDs.";
+            }
+
+            // Get top N items based on votes
+            var topItems = filteredVotedItems.OrderByDescending(item => item.Recommendations.FirstOrDefault()?.Voting ?? 0)
+                                             .Take(itemIds.Count) // Take the count of provided item IDs
+                                             .Select(item => item.ItemId)
+                                             .ToList();
+
+            if (!topItems.Any())
+            {
+                return "No items to finalize.";
+            }
+
+            var newMenu = new Menu
+            {
+                Date = parsedDate.ToString("yyyy-MM-dd"),
+                MenuItems = topItems.Select(id => new MenuItem { ItemId = id }).ToList()
+            };
+
+            await _menuRepository.AddAsync(newMenu);
+
+            return "Menu finalized based on votes.";
+        }
+
+    }
 }

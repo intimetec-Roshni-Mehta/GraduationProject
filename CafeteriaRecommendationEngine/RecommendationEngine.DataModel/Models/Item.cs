@@ -32,4 +32,14 @@ namespace RecommendationEngine.DataModel.Models
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual ICollection<Recommendation> Recommendations { get; set; }
     }
+
+    public class ItemDto
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string Status { get; set; }
+        public int MealTypeID { get; set; }
+    }
+
 }

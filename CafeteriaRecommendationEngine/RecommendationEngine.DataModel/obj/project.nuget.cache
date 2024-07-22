@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "xy9r81suDiE=",
+  "dgSpecHash": "iMbOJcIjikA=",
   "success": true,
   "projectFilePath": "D:\\GraduationProject\\CafeteriaRecommendationEngine\\RecommendationEngine.DataModel\\RecommendationEngine.DataModel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\roshni.mehta\\.nuget\\packages\\codingupastorm.vadersharp\\1.0.4\\codingupastorm.vadersharp.1.0.4.nupkg.sha512",
+    "C:\\Users\\roshni.mehta\\.nuget\\packages\\consoletableext\\3.3.0\\consoletableext.3.3.0.nupkg.sha512",
     "C:\\Users\\roshni.mehta\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\roshni.mehta\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\roshni.mehta\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

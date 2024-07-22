@@ -64,6 +64,10 @@
               "target": "Package",
               "version": "[1.0.4, )"
             },
+            "ConsoleTableExt": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -83,6 +87,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "System.ComponentModel.Annotations": {
               "target": "Package",
@@ -158,6 +166,10 @@
             "CodingUpAStorm.VaderSharp": {
               "target": "Package",
               "version": "[1.0.4, )"
+            },
+            "ConsoleTableExt": {
+              "target": "Package",
+              "version": "[3.3.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -266,6 +278,10 @@
               "target": "Package",
               "version": "[1.0.4, )"
             },
+            "ConsoleTableExt": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -364,6 +380,10 @@
             "CodingUpAStorm.VaderSharp": {
               "target": "Package",
               "version": "[1.0.4, )"
+            },
+            "ConsoleTableExt": {
+              "target": "Package",
+              "version": "[3.3.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

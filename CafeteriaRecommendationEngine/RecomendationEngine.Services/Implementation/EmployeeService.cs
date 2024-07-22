@@ -34,8 +34,7 @@ namespace RecomendationEngine.Services.Implementation
         public async Task<string> VoteForItems(int userId, List<int> itemIds)
         {
             var today = DateTime.Now.Date;
-            var successfulVotes = new List<int>();
-            var duplicateVotes = new List<int>();
+            var responseMessages = new List<string>();
 
             foreach (var itemId in itemIds)
             {
@@ -43,7 +42,7 @@ namespace RecomendationEngine.Services.Implementation
                 var existingVote = await _votedItemRepository.GetVoteAsync(userId, itemId, today);
                 if (existingVote != null)
                 {
-                    duplicateVotes.Add(itemId);
+                    responseMessages.Add($"You have already voted for item ID {itemId} today.");
                     continue;
                 }
 
@@ -56,8 +55,8 @@ namespace RecomendationEngine.Services.Implementation
                 };
                 await _votedItemRepository.AddAsync(vote);
 
-                // Update recommendation voting count
-                var recommendation = await _recommendationRepository.GetRecommendationAsync(itemId);
+                // Update recommendation voting count for today
+                var recommendation = await _recommendationRepository.GetRecommendationAsync(itemId, today);
                 if (recommendation != null)
                 {
                     recommendation.Voting++;
@@ -73,25 +72,14 @@ namespace RecomendationEngine.Services.Implementation
                     await _recommendationRepository.AddOrUpdateAsync(recommendation);
                 }
 
-                // Ensure the item is in the rolled-out menu
+                // Ensure the item is in the rolled-out menu for today
                 await _menuRepository.AddMenuItemAsync(itemId, today.ToString("yyyy-MM-dd"));
 
-                successfulVotes.Add(itemId);
+                responseMessages.Add($"Vote recorded successfully for item ID {itemId}.");
             }
 
             await _recommendationRepository.SaveChangesAsync();
-
-            var responseMessage = new StringBuilder();
-            if (successfulVotes.Any())
-            {
-                responseMessage.AppendLine($"You have successfully voted for the following item IDs: {string.Join(", ", successfulVotes)}.");
-            }
-            if (duplicateVotes.Any())
-            {
-                responseMessage.AppendLine($"You have already voted for the following item IDs today: {string.Join(", ", duplicateVotes)}.");
-            }
-
-            return responseMessage.ToString();
+            return string.Join("\n", responseMessages);
         }
 
         public async Task<string> GiveFeedback(int userId, int itemId, int rating, string comment)

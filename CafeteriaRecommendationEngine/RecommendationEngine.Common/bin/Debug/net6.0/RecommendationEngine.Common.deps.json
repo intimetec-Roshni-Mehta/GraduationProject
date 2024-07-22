@@ -9,6 +9,7 @@
       "RecommendationEngine.Common/1.0.0": {
         "dependencies": {
           "CodingUpAStorm.VaderSharp": "1.0.4",
+          "ConsoleTableExt": "3.3.0",
           "Microsoft.EntityFrameworkCore": "6.0.0",
           "Microsoft.EntityFrameworkCore.Design": "6.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0",
@@ -29,6 +30,14 @@
           "lib/netstandard1.3/VaderSharp.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "ConsoleTableExt/3.3.0": {
+        "runtime": {
+          "lib/netstandard2.0/ConsoleTableExt.dll": {
+            "assemblyVersion": "3.1.9.0",
+            "fileVersion": "3.1.9.0"
           }
         }
       },
@@ -1163,6 +1172,13 @@
       "sha512": "sha512-CzqATEidMnjrQ5WTyJPXQ99WV0W2d8QbsAWJ58GaNbUAisPdO/6qXqlqArueYuAJqkl1sdUx+vL37Ix8epbIAg==",
       "path": "codingupastorm.vadersharp/1.0.4",
       "hashPath": "codingupastorm.vadersharp.1.0.4.nupkg.sha512"
+    },
+    "ConsoleTableExt/3.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kQ1P7mgDQbvEDXGt1sheOQbu37TidLnOv7RjcSCqW8m/weFtu4adMkN75YQHp4mSqquokGdBJOAKGiegLx2Nhg==",
+      "path": "consoletableext/3.3.0",
+      "hashPath": "consoletableext.3.3.0.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",

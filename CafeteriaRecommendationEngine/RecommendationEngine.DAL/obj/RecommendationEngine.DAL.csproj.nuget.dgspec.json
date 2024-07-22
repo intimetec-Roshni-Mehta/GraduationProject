@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[1.0.4, )"
             },
+            "ConsoleTableExt": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -156,6 +160,10 @@
             "CodingUpAStorm.VaderSharp": {
               "target": "Package",
               "version": "[1.0.4, )"
+            },
+            "ConsoleTableExt": {
+              "target": "Package",
+              "version": "[3.3.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

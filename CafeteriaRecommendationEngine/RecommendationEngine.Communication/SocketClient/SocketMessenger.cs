@@ -98,7 +98,7 @@ namespace RecommendationEngine.Communication.SocketClient
                     ProcessAdminOptions(sender, username);
                     break;
                 case "Login successful; Role: Chef":
-                    Console.WriteLine("Options:\n1. Rollout Menu\n2. Get RollOut Menu\n");
+                    Console.WriteLine("Options:\n1. Rollout Menu\n2. Get Rolled Out Menu\n3. View Voted Items\n4. Finalize Menu\n");
                     ProcessChefOptions(sender, username);
                     break;
                 case "Login successful; Role: Employee":
@@ -204,6 +204,35 @@ namespace RecommendationEngine.Communication.SocketClient
                     var rolledOutMenuResponse = ReceiveServerResponse(sender);
                     Console.WriteLine(rolledOutMenuResponse);
                 }
+                else if (option == "3")
+                {
+                    SendMessage(sender, $"{option};{username};");
+                    var votedItemsResponse = ReceiveServerResponse(sender);
+                    Console.WriteLine(votedItemsResponse);
+                }
+                else if (option == "4")
+                {
+                    string date = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
+                    string itemIdsInput = PromptUser("Enter comma-separated item IDs to finalize: ");
+
+                    var itemIds = itemIdsInput.Split(',')
+                                              .Select(id => id.Trim())
+                                              .ToList();
+
+                    if (itemIds.Any())
+                    {
+                        var itemIdsString = string.Join(",", itemIds);
+                        SendMessage(sender, $"{option};{username};{date};{itemIdsString}");
+
+                        var finalizeResponse = ReceiveServerResponse(sender);
+                        Console.WriteLine(finalizeResponse);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No item IDs provided. Please enter valid item IDs.");
+                    }
+                }
+
                 else
                 {
                     SendMessage(sender, $"{option};{username};");

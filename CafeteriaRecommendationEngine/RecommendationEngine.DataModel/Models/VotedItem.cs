@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,5 +27,13 @@ namespace RecommendationEngine.DataModel.Models
         // Navigation properties
         public virtual User User { get; set; }
         public virtual Item Item { get; set; }
+    }
+
+    public class VotedItemDto
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string MealType { get; set; }
+        public int Votes { get; set; }
     }
 }

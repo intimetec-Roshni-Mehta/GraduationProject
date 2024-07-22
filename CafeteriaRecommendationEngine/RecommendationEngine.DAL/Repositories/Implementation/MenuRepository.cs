@@ -2,10 +2,6 @@
 using RecommendationEngine.DAL.DbConnection;
 using RecommendationEngine.DAL.Repositories.Interfaces;
 using RecommendationEngine.DataModel.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RecommendationEngine.DAL.Repositories.Implementation
 {
@@ -73,6 +69,10 @@ namespace RecommendationEngine.DAL.Repositories.Implementation
                 .ToListAsync();
         }
 
-
+        public async Task<bool> IsMenuRolledOutAsync(DateTime date)
+        {
+            var dateString = date.ToString("yyyy-MM-dd");
+            return await _context.Menu.AnyAsync(m => m.Date == dateString);
+        }
     }
 }

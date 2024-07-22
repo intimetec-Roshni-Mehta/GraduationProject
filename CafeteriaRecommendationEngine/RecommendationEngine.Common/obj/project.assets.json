@@ -18,6 +18,15 @@
           }
         }
       },
+      "ConsoleTableExt/3.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ConsoleTableExt.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ConsoleTableExt.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -2062,6 +2071,21 @@
         "lib/net35/VaderSharp.xml",
         "lib/netstandard1.3/VaderSharp.dll",
         "lib/netstandard1.3/VaderSharp.xml"
+      ]
+    },
+    "ConsoleTableExt/3.3.0": {
+      "sha512": "kQ1P7mgDQbvEDXGt1sheOQbu37TidLnOv7RjcSCqW8m/weFtu4adMkN75YQHp4mSqquokGdBJOAKGiegLx2Nhg==",
+      "type": "package",
+      "path": "consoletableext/3.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "consoletableext.3.3.0.nupkg.sha512",
+        "consoletableext.nuspec",
+        "lib/net35/ConsoleTableExt.dll",
+        "lib/net46/ConsoleTableExt.dll",
+        "lib/netstandard2.0/ConsoleTableExt.dll"
       ]
     },
     "Humanizer.Core/2.8.26": {
@@ -6609,6 +6633,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "CodingUpAStorm.VaderSharp >= 1.0.4",
+      "ConsoleTableExt >= 3.3.0",
       "Microsoft.EntityFrameworkCore >= 6.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.0",
@@ -6671,6 +6696,10 @@
           "CodingUpAStorm.VaderSharp": {
             "target": "Package",
             "version": "[1.0.4, )"
+          },
+          "ConsoleTableExt": {
+            "target": "Package",
+            "version": "[3.3.0, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",

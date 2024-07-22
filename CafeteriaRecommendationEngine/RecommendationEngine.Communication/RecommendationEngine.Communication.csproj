@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="CodingUpAStorm.VaderSharp" Version="1.0.4" />
-    <PackageReference Include="ConsoleTableExt" Version="3.2.0" />
+    <PackageReference Include="ConsoleTableExt" Version="3.3.0" />
   </ItemGroup>
 
   <ItemGroup>

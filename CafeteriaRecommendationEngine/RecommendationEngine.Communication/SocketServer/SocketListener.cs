@@ -244,7 +244,6 @@ namespace RecommendationEngine.Communication.SocketServer
             }
         }
 
-
         private static async Task<string> HandleChefCommands(string command, string[] parts)
         {
             switch (command)
@@ -279,10 +278,41 @@ namespace RecommendationEngine.Communication.SocketServer
 
                     return $"Rolled out menu for tomorrow:\n{itemDetails}";
 
+                case "3": // View Voted Items
+                    var votedItems = await chefService.GetVotedItems();
+                    return votedItems;
+
+                case "4": // Finalize Menu
+                    {
+                        if (parts.Length < 4)
+                        {
+                            return "Invalid command format for Finalize Menu. Expected: 4;username;date;itemIds";
+                        }
+
+                        var finalizeDate = parts[2];
+                        var itemIdsString = parts[3]; 
+
+                        var itemIdList = itemIdsString.Split(',')
+                                                   .Select(id => id.Trim())
+                                                   .Where(id => int.TryParse(id, out _))
+                                                   .Select(int.Parse)
+                                                   .ToList();
+
+                        if (!itemIdList.Any())
+                        {
+                            return "No valid item IDs provided.";
+                        }
+
+                        var finalizeResult = await chefService.FinalizeMenu(finalizeDate, itemIdList);
+                        return finalizeResult;
+                    }
+
+
                 default:
                     return "Unknown chef command";
             }
         }
+
 
         private static async Task<string> HandleEmployeeCommands(string command, string[] parts)
         {
@@ -359,9 +389,7 @@ namespace RecommendationEngine.Communication.SocketServer
                 return "No items found";
             }
 
-            var filteredItems = items.ToList();
-
-            var tableData = filteredItems.Select(item => new
+            var tableData = items.Select(item => new ItemDto
             {
                 ID = item.ItemId,
                 Name = item.ItemName,
@@ -378,5 +406,6 @@ namespace RecommendationEngine.Communication.SocketServer
 
             return tableString;
         }
+
     }
 }

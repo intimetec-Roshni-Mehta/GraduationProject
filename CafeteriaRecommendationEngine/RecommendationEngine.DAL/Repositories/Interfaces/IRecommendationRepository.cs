@@ -9,8 +9,9 @@ namespace RecommendationEngine.DAL.Repositories.Interfaces
 {
     public interface IRecommendationRepository
     {
-        Task<Recommendation> GetRecommendationAsync(int itemId);
+        Task<Recommendation> GetRecommendationAsync(int itemId, DateTime date);
         Task AddOrUpdateAsync(Recommendation recommendation);
         Task SaveChangesAsync();
+        Task<List<Item>> GetVotedItemsAsync(DateTime date);
     }
 }

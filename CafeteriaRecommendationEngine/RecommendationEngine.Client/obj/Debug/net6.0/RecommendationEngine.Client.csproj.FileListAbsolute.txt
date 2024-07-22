@@ -211,3 +211,7 @@ D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.Client\o
 D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.Client\obj\Debug\net6.0\RecommendationEngine.Client.pdb
 D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.Client\obj\Debug\net6.0\RecommendationEngine.Client.genruntimeconfig.cache
 D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.Client\obj\Debug\net6.0\ref\RecommendationEngine.Client.dll
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.Client\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.Client\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.Client\bin\Debug\net6.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.Client\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll

@@ -64,6 +64,10 @@
               "target": "Package",
               "version": "[1.0.4, )"
             },
+            "ConsoleTableExt": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -83,6 +87,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "System.ComponentModel.Annotations": {
               "target": "Package",
@@ -166,6 +174,10 @@
               "target": "Package",
               "version": "[1.0.4, )"
             },
+            "ConsoleTableExt": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -246,6 +258,10 @@
             "CodingUpAStorm.VaderSharp": {
               "target": "Package",
               "version": "[1.0.4, )"
+            },
+            "ConsoleTableExt": {
+              "target": "Package",
+              "version": "[3.3.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -359,7 +375,7 @@
             },
             "ConsoleTableExt": {
               "target": "Package",
-              "version": "[3.2.0, )"
+              "version": "[3.3.0, )"
             }
           },
           "imports": [
@@ -435,6 +451,10 @@
             "CodingUpAStorm.VaderSharp": {
               "target": "Package",
               "version": "[1.0.4, )"
+            },
+            "ConsoleTableExt": {
+              "target": "Package",
+              "version": "[3.3.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -534,6 +554,10 @@
             "CodingUpAStorm.VaderSharp": {
               "target": "Package",
               "version": "[1.0.4, )"
+            },
+            "ConsoleTableExt": {
+              "target": "Package",
+              "version": "[3.3.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

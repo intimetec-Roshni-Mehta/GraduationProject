@@ -19,10 +19,10 @@ namespace RecommendationEngine.DAL.Repositories.Implementation
             _context = context;
         }
 
-        public async Task<VotedItem> GetVoteAsync(int userId, int itemId, DateTime voteDate)
+        public async Task<VotedItem> GetVoteAsync(int userId, int itemId, DateTime date)
         {
             return await _context.VotedItem
-                .FirstOrDefaultAsync(v => v.UserId == userId && v.ItemId == itemId && v.VoteDate == voteDate);
+                .FirstOrDefaultAsync(v => v.UserId == userId && v.ItemId == itemId && v.VoteDate == date);
         }
 
         public async Task AddAsync(VotedItem vote)
