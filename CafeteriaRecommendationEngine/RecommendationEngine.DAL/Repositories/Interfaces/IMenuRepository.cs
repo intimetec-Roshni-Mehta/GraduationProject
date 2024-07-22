@@ -14,5 +14,6 @@ namespace RecommendationEngine.DAL.Repositories.Interfaces
         Task AddMenuItemAsync(int itemId, string date);
         Task<List<Menu>> GetByDateWithItemsAndRecommendationsAsync(string date);
         Task<bool> IsMenuRolledOutAsync(DateTime date);
+        Task<Menu> GetFinalizedMenuAsync(DateTime date);
     }
 }

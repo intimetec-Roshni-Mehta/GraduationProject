@@ -313,7 +313,6 @@ namespace RecommendationEngine.Communication.SocketServer
             }
         }
 
-
         private static async Task<string> HandleEmployeeCommands(string command, string[] parts)
         {
             switch (command)
@@ -375,9 +374,25 @@ namespace RecommendationEngine.Communication.SocketServer
                         return "User not found";
                     }
                     return await employeeService.VoteForItems(voteUserId.Value, voteItemIds);
+                case "4":
+                    // Use DateTime.Today to get the current date, or adjust as needed
+                    var finalizedMenuDate = DateTime.Today;
+
+                    // Get the finalized menu items for the specified date
+                    var finalizedMenuItems = await employeeService.GetFinalizedMenu(finalizedMenuDate.ToString("yyyy-MM-dd"));
+
+                    if (finalizedMenuItems == null)
+                    {
+                        return "No finalized menu items found for the specified date.";
+                    }
+
+                    // Format the finalized menu items for display
+
+                    return $"Finalized menu items for {finalizedMenuDate:yyyy-MM-dd}:\n{finalizedMenuItems}";
 
                 default:
                     return "Unknown employee command";
+
             }
         }
 

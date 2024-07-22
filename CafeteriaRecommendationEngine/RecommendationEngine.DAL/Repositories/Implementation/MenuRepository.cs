@@ -74,5 +74,13 @@ namespace RecommendationEngine.DAL.Repositories.Implementation
             var dateString = date.ToString("yyyy-MM-dd");
             return await _context.Menu.AnyAsync(m => m.Date == dateString);
         }
+
+        public async Task<Menu> GetFinalizedMenuAsync(DateTime date)
+        {
+            return await _context.Menu
+                .Include(m => m.MenuItems)
+                .ThenInclude(mi => mi.Item)
+                .FirstOrDefaultAsync(m => m.Date == date.ToString("yyyy-MM-dd"));
+        }
     }
 }

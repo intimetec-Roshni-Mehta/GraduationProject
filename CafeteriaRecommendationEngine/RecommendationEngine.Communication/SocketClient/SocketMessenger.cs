@@ -102,7 +102,7 @@ namespace RecommendationEngine.Communication.SocketClient
                     ProcessChefOptions(sender, username);
                     break;
                 case "Login successful; Role: Employee":
-                    Console.WriteLine("Options:\n1. Give Feedback\n2. View Recommended Menu\n3. Vote For Item\n");
+                    Console.WriteLine("Options:\n1. Give Feedback\n2. View Recommended Menu\n3. Vote For Item\n4. Get Finalized Menu\n");
                     ProcessEmployeeOptions(sender, username);
                     break;
                 default:

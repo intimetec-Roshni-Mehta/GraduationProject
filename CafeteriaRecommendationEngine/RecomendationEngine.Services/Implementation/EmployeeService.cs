@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ConsoleTableExt;
+using Microsoft.EntityFrameworkCore;
 using RecomendationEngine.Services.Interfaces;
 using RecommendationEngine.DAL.Repositories.Implementation;
 using RecommendationEngine.DAL.Repositories.Interfaces;
@@ -84,15 +85,25 @@ namespace RecomendationEngine.Services.Implementation
 
         public async Task<string> GiveFeedback(int userId, int itemId, int rating, string comment)
         {
-            var rolledOutItems = await _chefService.GetRolledOutMenu(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"));
-            var rolledOutItemIds = rolledOutItems.Select(item => item.ItemId);
+            var today = DateTime.Now.Date;
+            var finalizedMenu = await _menuRepository.GetFinalizedMenuAsync(today);
 
-            if (!rolledOutItemIds.Contains(itemId))
+            // Ensure finalizedMenuItems is a collection
+            if (finalizedMenu == null || !finalizedMenu.MenuItems.Any())
             {
-                return "Cannot give feedback for an item that is not in the rolled-out menu.";
+                return "No finalized menu items found for today.";
             }
 
-            // Check if the employee has already given feedback for this item
+            // Ensure finalizedMenuItems is a collection of objects with ItemId
+            var finalizedItemIds = finalizedMenu.MenuItems
+                .Select(menuItem => menuItem.ItemId)  // Ensure menuItem has ItemId
+                .ToHashSet();
+
+            if (!finalizedItemIds.Contains(itemId))
+            {
+                return "Cannot give feedback for an item that is not in the finalized menu.";
+            }
+
             var existingFeedback = await _feedbackRepository.GetFeedbackAsync(userId, itemId);
             if (existingFeedback != null)
             {
@@ -115,6 +126,39 @@ namespace RecomendationEngine.Services.Implementation
 
             return $"Feedback recorded successfully. Sentiment: {sentiment}";
         }
+
+        public async Task<string> GetFinalizedMenu(string date)
+        {
+            var parsedDate = DateTime.Parse(date);
+
+            // Retrieve the finalized menu for the given date
+            var menu = await _menuRepository.GetFinalizedMenuAsync(parsedDate);
+
+            if (menu == null)
+            {
+                return "No menu finalized for the specified date.";
+            }
+
+            // Prepare a response string with menu items
+            var menuItems = menu.MenuItems.Select(mi => new MenuItemDto
+            {
+                ID = mi.ItemId,
+                Name = mi.Item.ItemName,
+                Price = mi.Item.Price,
+                MealType = mi.Item.MealType?.MealTypeName ?? "Unknown"
+            }).ToList();
+
+            var tableString = ConsoleTableBuilder
+                .From(menuItems)
+                .WithFormat(ConsoleTableBuilderFormat.MarkDown)
+                .Export()
+                .ToString();
+
+
+            return $"Finalized menu for {date}:\n{tableString}";
+        }
+
+
 
         private string AnalyzeSentiment(string text)
         {

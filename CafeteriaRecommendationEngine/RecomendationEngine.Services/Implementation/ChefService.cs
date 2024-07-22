@@ -100,7 +100,6 @@ namespace RecomendationEngine.Services.Implementation
                 return "Menu has not been rolled out for the specified date.";
             }
 
-            // Get the voted items for the previous date
             var votedItems = await _recommendationRepository.GetVotedItemsAsync(previousDate);
 
             if (votedItems == null || !votedItems.Any())
@@ -108,7 +107,6 @@ namespace RecomendationEngine.Services.Implementation
                 return "No items have been voted on.";
             }
 
-            // Filter voted items that are part of the provided item IDs
             var filteredVotedItems = votedItems.Where(item => itemIds.Contains(item.ItemId)).ToList();
 
             if (!filteredVotedItems.Any())
@@ -116,9 +114,8 @@ namespace RecomendationEngine.Services.Implementation
                 return "No voted items match the provided item IDs.";
             }
 
-            // Get top N items based on votes
             var topItems = filteredVotedItems.OrderByDescending(item => item.Recommendations.FirstOrDefault()?.Voting ?? 0)
-                                             .Take(itemIds.Count) // Take the count of provided item IDs
+                                             .Take(itemIds.Count)
                                              .Select(item => item.ItemId)
                                              .ToList();
 

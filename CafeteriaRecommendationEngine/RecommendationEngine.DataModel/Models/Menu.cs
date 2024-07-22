@@ -19,8 +19,6 @@ namespace RecommendationEngine.DataModel.Models
         public virtual ICollection<MenuItem> MenuItems { get; set; }
     }
 
-
-
     public class MenuItem
     {
         [Key]
@@ -31,8 +29,18 @@ namespace RecommendationEngine.DataModel.Models
 
         [ForeignKey("Item")]
         public int ItemId { get; set; }
-
+        public bool IsFinalized { get; set; }
+        public DateTime? FinalizedDate { get; set; }
         public virtual Menu Menu { get; set; }
         public virtual Item Item { get; set; }
     }
+
+    public class MenuItemDto
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string MealType { get; set; }
+    }
+
 }
