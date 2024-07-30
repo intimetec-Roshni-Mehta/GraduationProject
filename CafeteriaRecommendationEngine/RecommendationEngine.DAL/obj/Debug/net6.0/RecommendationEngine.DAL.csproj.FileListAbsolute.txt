@@ -1,0 +1,53 @@
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DAL.deps.json
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DAL.runtimeconfig.json
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DAL.dll
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DAL.pdb
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DataModel.dll
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DataModel.pdb
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.csproj.AssemblyReference.cache
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.AssemblyInfoInputs.cache
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.AssemblyInfo.cs
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.csproj.CoreCompileInputs.cache
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\Recommen.F2164DCA.Up2Date
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.dll
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\refint\RecommendationEngine.DAL.dll
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.pdb
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.genruntimeconfig.cache
+D:\Roshni backup\learn and code\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\ref\RecommendationEngine.DAL.dll
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DAL.deps.json
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DAL.runtimeconfig.json
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DAL.dll
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DAL.pdb
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DataModel.dll
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DataModel.pdb
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.csproj.AssemblyReference.cache
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.AssemblyInfoInputs.cache
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.AssemblyInfo.cs
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.csproj.CoreCompileInputs.cache
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.sourcelink.json
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\Recommen.F2164DCA.Up2Date
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.dll
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\refint\RecommendationEngine.DAL.dll
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.pdb
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.genruntimeconfig.cache
+C:\Users\roshni.mehta\OneDrive - InTimeTec Visionsoft Pvt. Ltd.,\Desktop\Gratuation_Project_2024\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\ref\RecommendationEngine.DAL.dll
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DAL.deps.json
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DAL.runtimeconfig.json
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DAL.dll
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DAL.pdb
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DataModel.dll
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\bin\Debug\net6.0\RecommendationEngine.DataModel.pdb
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.csproj.AssemblyReference.cache
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.AssemblyInfoInputs.cache
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.AssemblyInfo.cs
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.csproj.CoreCompileInputs.cache
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.sourcelink.json
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\Recommen.F2164DCA.Up2Date
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.dll
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\refint\RecommendationEngine.DAL.dll
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.pdb
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\RecommendationEngine.DAL.genruntimeconfig.cache
+D:\GraduationProject\CafeteriaRecommendationEngine\RecommendationEngine.DAL\obj\Debug\net6.0\ref\RecommendationEngine.DAL.dll
