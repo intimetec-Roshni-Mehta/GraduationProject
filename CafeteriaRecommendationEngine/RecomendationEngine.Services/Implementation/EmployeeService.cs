@@ -21,8 +21,9 @@ namespace RecomendationEngine.Services.Implementation
         private readonly IAuthService _authService;
         private readonly IChefService _chefService;
         private readonly IMenuRepository _menuRepository;
+        private readonly IEmployeeRepository _employeeRepository;
 
-        public EmployeeService(IVotedItemRepository votedItemRepository, IRecommendationRepository recommendationRepository, IFeedbackRepository feedbackRepository, IAuthService authService, IChefService chefService, IMenuRepository menuRepository)
+        public EmployeeService(IVotedItemRepository votedItemRepository, IRecommendationRepository recommendationRepository, IFeedbackRepository feedbackRepository, IAuthService authService, IChefService chefService, IMenuRepository menuRepository, IEmployeeRepository employeeRepository)
         {
             _votedItemRepository = votedItemRepository;
             _recommendationRepository = recommendationRepository;
@@ -30,6 +31,7 @@ namespace RecomendationEngine.Services.Implementation
             _authService = authService;
             _chefService = chefService;
             _menuRepository = menuRepository;
+            _employeeRepository = employeeRepository;
         }
 
         public async Task<string> VoteForItems(int userId, List<int> itemIds)
@@ -158,6 +160,27 @@ namespace RecomendationEngine.Services.Implementation
             return $"Finalized menu for {date}:\n{tableString}";
         }
 
+        public async Task<string> UpdateProfile(string username, string dietPreference, string spiceLevel, string cuisinePreference, string sweetTooth)
+        {
+            // Fetch user based on username
+            var user = await _authService.GetUserIdByUsername(username);
+            if (user == null)
+            {
+                return "User not found";
+            }
+
+            // Update user profile information
+            var profileUpdateResult = await _employeeRepository.UpdateProfile(user, dietPreference, spiceLevel, cuisinePreference, sweetTooth);
+
+            if (profileUpdateResult)
+            {
+                return "Profile updated successfully";
+            }
+            else
+            {
+                return "Failed to update profile";
+            }
+        }
 
 
         private string AnalyzeSentiment(string text)

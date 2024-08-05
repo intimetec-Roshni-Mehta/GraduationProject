@@ -12,5 +12,6 @@ namespace RecomendationEngine.Services.Interfaces
         Task<string> VoteForItems(int userId, List<int> itemIds);
         Task<string> GiveFeedback(int userId, int itemId, int rating, string comment);
         Task<string> GetFinalizedMenu(string date);
+        Task<string> UpdateProfile(string userName, string dietPreference, string spiceLevel, string cuisinePreference, string sweetTooth);
     }
 }

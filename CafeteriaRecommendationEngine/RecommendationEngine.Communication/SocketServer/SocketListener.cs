@@ -113,9 +113,7 @@ namespace RecommendationEngine.Communication.SocketServer
                     }
 
                     activeSessions.TryAdd(username, (handler, user));
-
-                    var response = $"Login successful; Role: {user.Role.RoleName}";
-                    return response;
+                    return $"Login successful; Role: {user.Role.RoleName}";
                 }
 
                 if (command == "logout")
@@ -124,10 +122,7 @@ namespace RecommendationEngine.Communication.SocketServer
                     {
                         return "Logout successful";
                     }
-                    else
-                    {
-                        return "Logout failed: User not logged in";
-                    }
+                    return "Logout failed: User not logged in";
                 }
 
                 if (activeSessions.ContainsKey(username))
@@ -317,6 +312,7 @@ namespace RecommendationEngine.Communication.SocketServer
             }
         }
 
+
         private static async Task<string> HandleEmployeeCommands(string command, string[] parts)
         {
             switch (command)
@@ -379,25 +375,23 @@ namespace RecommendationEngine.Communication.SocketServer
                     }
                     return await employeeService.VoteForItems(voteUserId.Value, voteItemIds);
 
-                case "4":
-                    // Use DateTime.Today to get the current date, or adjust as needed
-                    var finalizedMenuDate = DateTime.Today;
-
-                    // Get the finalized menu items for the specified date
-                    var finalizedMenuItems = await employeeService.GetFinalizedMenu(finalizedMenuDate.ToString("yyyy-MM-dd"));
-
-                    if (finalizedMenuItems == null)
+                case "4": // Update Profile
+                    if (parts.Length < 5)
                     {
-                        return "No finalized menu items found for the specified date.";
+                        return "Invalid command format for Update Profile. Expected: 4;username;dietPreference;spiceLevel;cuisinePreference;sweetTooth";
                     }
-
-                    // Format the finalized menu items for display
-                    return $"Finalized menu items for {finalizedMenuDate:yyyy-MM-dd}:\n{finalizedMenuItems}";
+                    var userName = parts[1];
+                    var dietPreference = parts[2];
+                    var spiceLevel = parts[3];
+                    var cuisinePreference = parts[4];
+                    var sweetTooth = parts[5];
+                    return await employeeService.UpdateProfile(userName, dietPreference, spiceLevel, cuisinePreference, sweetTooth);
 
                 default:
                     return "Unknown employee command";
             }
         }
+
 
         private static async Task<string> GetItemsList()
         {
