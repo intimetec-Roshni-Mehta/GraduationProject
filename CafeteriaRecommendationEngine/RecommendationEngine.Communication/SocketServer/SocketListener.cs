@@ -362,7 +362,7 @@ namespace RecommendationEngine.Communication.SocketServer
                     var voteUsername = parts[1];
                     var voteItemIds = parts[2].Split(',').Select(int.Parse).ToList();
 
-
+                    // Check if the items are in the rolled-out menu
                     var rolledOutItemsForVote = await chefService.GetRolledOutMenu(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"));
                     var validItemIds = rolledOutItemsForVote.Select(item => item.ItemId).ToList();
                     var invalidItemIds = voteItemIds.Except(validItemIds).ToList();
@@ -380,8 +380,10 @@ namespace RecommendationEngine.Communication.SocketServer
                     return await employeeService.VoteForItems(voteUserId.Value, voteItemIds);
 
                 case "4":
+                    // Use DateTime.Today to get the current date, or adjust as needed
                     var finalizedMenuDate = DateTime.Today;
 
+                    // Get the finalized menu items for the specified date
                     var finalizedMenuItems = await employeeService.GetFinalizedMenu(finalizedMenuDate.ToString("yyyy-MM-dd"));
 
                     if (finalizedMenuItems == null)
@@ -389,6 +391,7 @@ namespace RecommendationEngine.Communication.SocketServer
                         return "No finalized menu items found for the specified date.";
                     }
 
+                    // Format the finalized menu items for display
                     return $"Finalized menu items for {finalizedMenuDate:yyyy-MM-dd}:\n{finalizedMenuItems}";
 
                 default:
