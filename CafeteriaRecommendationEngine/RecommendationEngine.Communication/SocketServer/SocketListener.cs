@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -25,7 +26,7 @@ namespace RecommendationEngine.Communication.SocketServer
         public static async Task StartServer(IServiceProvider services)
         {
             var ipAddress = IPAddress.Parse("172.20.10.14");
-            var localEndPoint = new IPEndPoint(ipAddress, 9999);
+            var localEndPoint = new IPEndPoint(ipAddress, 1010);
 
             var listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
@@ -180,6 +181,8 @@ namespace RecommendationEngine.Communication.SocketServer
                     }
 
                     await adminService.AddItem(itemName, itemPrice, itemStatus, mealTypeId);
+                    await BroadcastNotification("NewItemAdded", $"New item added: {itemName}");
+
                     return "Add Item selected";
 
                 case "2": // Update Item
@@ -199,6 +202,8 @@ namespace RecommendationEngine.Communication.SocketServer
                     string updateItemStatus = parts[4];
 
                     await adminService.UpdateItem(updateItemId, updateItemPrice, updateItemStatus);
+                    await BroadcastNotification("ItemStatusChanged", $"Item status changed: {updateItemId}");
+
                     return "Update Item selected";
 
                 case "3": // Delete Item
@@ -261,6 +266,8 @@ namespace RecommendationEngine.Communication.SocketServer
                     var date = parts[2];
                     var itemIds = parts[3].Split(',').Select(int.Parse).ToList();
                     var rolloutResult = await chefService.RolloutMenu(date, itemIds);
+                    await BroadcastNotification("MenuRollout", $"Menu rolled out for {date}");
+
                     return rolloutResult;
 
                 case "2": // Get Rolled Out Menu
@@ -283,30 +290,27 @@ namespace RecommendationEngine.Communication.SocketServer
                     return votedItems;
 
                 case "4": // Finalize Menu
+                    if (parts.Length < 4)
                     {
-                        if (parts.Length < 4)
-                        {
-                            return "Invalid command format for Finalize Menu. Expected: 4;username;date;itemIds";
-                        }
+                        return "Invalid command format for Finalize Menu. Expected: 4;username;date;itemIds";
+                    }
 
-                        var finalizeDate = parts[2];
-                        var itemIdsString = parts[3]; 
+                    var finalizeDate = parts[2];
+                    var itemIdsString = parts[3];
 
-                        var itemIdList = itemIdsString.Split(',')
+                    var itemIdList = itemIdsString.Split(',')
                                                    .Select(id => id.Trim())
                                                    .Where(id => int.TryParse(id, out _))
                                                    .Select(int.Parse)
                                                    .ToList();
 
-                        if (!itemIdList.Any())
-                        {
-                            return "No valid item IDs provided.";
-                        }
-
-                        var finalizeResult = await chefService.FinalizeMenu(finalizeDate, itemIdList);
-                        return finalizeResult;
+                    if (!itemIdList.Any())
+                    {
+                        return "No valid item IDs provided.";
                     }
 
+                    var finalizeResult = await chefService.FinalizeMenu(finalizeDate, itemIdList);
+                    return finalizeResult;
 
                 default:
                     return "Unknown chef command";
@@ -358,7 +362,7 @@ namespace RecommendationEngine.Communication.SocketServer
                     var voteUsername = parts[1];
                     var voteItemIds = parts[2].Split(',').Select(int.Parse).ToList();
 
-                    // Check if the items are in the rolled-out menu
+
                     var rolledOutItemsForVote = await chefService.GetRolledOutMenu(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"));
                     var validItemIds = rolledOutItemsForVote.Select(item => item.ItemId).ToList();
                     var invalidItemIds = voteItemIds.Except(validItemIds).ToList();
@@ -374,11 +378,10 @@ namespace RecommendationEngine.Communication.SocketServer
                         return "User not found";
                     }
                     return await employeeService.VoteForItems(voteUserId.Value, voteItemIds);
+
                 case "4":
-                    // Use DateTime.Today to get the current date, or adjust as needed
                     var finalizedMenuDate = DateTime.Today;
 
-                    // Get the finalized menu items for the specified date
                     var finalizedMenuItems = await employeeService.GetFinalizedMenu(finalizedMenuDate.ToString("yyyy-MM-dd"));
 
                     if (finalizedMenuItems == null)
@@ -386,13 +389,10 @@ namespace RecommendationEngine.Communication.SocketServer
                         return "No finalized menu items found for the specified date.";
                     }
 
-                    // Format the finalized menu items for display
-
                     return $"Finalized menu items for {finalizedMenuDate:yyyy-MM-dd}:\n{finalizedMenuItems}";
 
                 default:
                     return "Unknown employee command";
-
             }
         }
 
@@ -422,5 +422,28 @@ namespace RecommendationEngine.Communication.SocketServer
             return tableString;
         }
 
+        private static async Task BroadcastNotification(string notificationType, string message)
+        {
+            var tasks = activeSessions.Values.Select(async session =>
+            {
+                var (socket, user) = session;
+
+                // Filter notifications based on user role
+                if ((notificationType == "NewItemAdded" || notificationType == "ItemStatusChanged") &&
+                    (user.Role.RoleName.ToLower() == "chef" || user.Role.RoleName.ToLower() == "employee"))
+                {
+                    var msg = Encoding.ASCII.GetBytes($"Notification: {message}");
+                    await socket.SendAsync(msg, SocketFlags.None);
+                }
+
+                if (notificationType == "MenuRollout" && user.Role.RoleName.ToLower() == "employee")
+                {
+                    var msg = Encoding.ASCII.GetBytes($"Notification: {message}");
+                    await socket.SendAsync(msg, SocketFlags.None);
+                }
+            });
+
+            await Task.WhenAll(tasks);
+        }
     }
 }

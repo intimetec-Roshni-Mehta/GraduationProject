@@ -11,7 +11,7 @@ namespace RecommendationEngine.Communication.SocketClient
         {
             try
             {
-                var remoteEP = new IPEndPoint(IPAddress.Parse("172.20.10.14"), 9999);
+                var remoteEP = new IPEndPoint(IPAddress.Parse("172.20.10.14"), 1010);
 
                 using (Socket sender = new Socket(remoteEP.AddressFamily, SocketType.Stream, ProtocolType.Tcp))
                 {
