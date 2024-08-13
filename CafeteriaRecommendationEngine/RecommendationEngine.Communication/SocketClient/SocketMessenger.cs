@@ -237,13 +237,13 @@ namespace RecommendationEngine.Communication.SocketClient
 
                     SendMessage(sender, $"{option};{username};{formattedDate};{formattedItemIds}");
                     var rolloutResponse = ReceiveServerResponse(sender);
-                    Console.WriteLine(rolloutResponse);
+                    ProcessRecommendations(rolloutResponse);
                 }
                 else if (option == "2")
                 {
                     SendMessage(sender, $"{option};{username};");
                     var rolledOutMenuResponse = ReceiveServerResponse(sender);
-                    Console.WriteLine(rolledOutMenuResponse);
+                    ProcessRecommendations(rolledOutMenuResponse);
                 }
                 else if (option == "3")
                 {
@@ -336,11 +336,9 @@ namespace RecommendationEngine.Communication.SocketClient
                     var details = Console.ReadLine();
                     SendMessage(sender, $"{option};{username};{details}");
                 }
-                else if (option == "3")
+                else if (option == "5") // Update Profile
                 {
-                    Console.Write("Enter item IDs you want to vote separated by commas: ");
-                    var itemId = Console.ReadLine();
-                    SendMessage(sender, $"{option};{username};{itemId}");
+                    UpdateProfile(sender, username);
                 }
                 else
                 {
@@ -351,6 +349,30 @@ namespace RecommendationEngine.Communication.SocketClient
                 Console.WriteLine(serverResponse);
             }
         }
+
+        private static void UpdateProfile(Socket sender, string username)
+        {
+            Console.WriteLine("Please answer these questions to know your preferences:");
+
+            string dietPreference = PromptUser("1) Please select one - Vegetarian, Non Vegetarian, Eggetarian: ");
+            string spiceLevel = PromptUser("2) Please select your spice level - High, Medium, Low: ");
+            string cuisinePreference = PromptUser("3) What do you prefer most? - North Indian, South Indian, Other: ");
+            string sweetTooth = PromptUser("4) Do you have a sweet tooth? - Yes, No: ");
+
+            string profileData = $"{dietPreference};{spiceLevel};{cuisinePreference};{sweetTooth}";
+            SendMessage(sender, $"updateProfile;{username};{profileData}");
+        }
+
+        private static void ProcessRecommendations(string response)
+        {
+            var items = response.Split(';'); 
+            Console.WriteLine("Recommended Items for you:");
+            foreach (var item in items)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
 
         private static string ReceiveServerResponse(Socket sender)
         {

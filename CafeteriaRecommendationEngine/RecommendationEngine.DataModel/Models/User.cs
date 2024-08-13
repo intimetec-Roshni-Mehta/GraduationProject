@@ -27,5 +27,10 @@ namespace RecommendationEngine.DataModel.Models
         public virtual ICollection<Feedback> Feedback { get; set; }
         public virtual ICollection<VotedItem> VotedItem { get; set; }
         public virtual ICollection<Notification> Notification { get; set; }
+
+        public string DietaryPreference { get; set; }
+        public string SpiceLevel { get; set; }
+        public string CuisinePreference { get; set; }
+        public string SweetToothPreference { get; set; }
     }
 }
